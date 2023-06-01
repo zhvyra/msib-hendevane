@@ -1,0 +1,78 @@
+<script>
+  //array of object
+  // atau array didalam array
+  // atau arraya yang menyimpan array
+
+  let p1 = { nama: "Arip", nilai: 80 };
+  let p2 = { nama: "Ali", nilai: 91 };
+  let p3 = { nama: "Aldi", nilai: 72 };
+  let p4 = { nama: "Ani", nilai: 63 };
+  let p5 = { nama: "Budi", nilai: 50 };
+
+  let person = [p1, p2, p3, p4, p5];
+
+  const setGrade = (nilai) => {
+    if (nilai >= 90 && nilai < 100) return "A";
+    else if (nilai >= 80) return "B";
+    else if (nilai >= 70) return "C";
+    else if (nilai >= 60) return "D";
+    else return "E";
+  };
+
+  const setPredikat = (str) => {
+    switch (str) {
+      case "A":
+        return "Sangat Baik";
+      case "B":
+        return "Baik";
+      case "C":
+        return "Cukup";
+      case "D":
+        return "Kurang";
+      case "E":
+        return "Sangat Kurang";
+    }
+  };
+</script>
+<h3>
+  <table style="padding: 10; text-align: center; width: 100%">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Nilai</th>
+        <th>Status</th>
+        <th>Grade</th>
+        <th>Predikat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <script>
+        var no = 1;
+        for (p of person) {
+          let ket = p.nilai >= 60 ? "Lulus" : "Gagal";
+
+          //set grade A - E (menggunakan if multi kondisi)
+          // A = 90 - 100, B 80 - 89 dan seterusnya sampai E
+          let grade = setGrade(p.nilai);
+
+          //set predikat (menggunakan swtich case)
+          //A = Sangat baik, B = Baik, C = Cukup, D= Kurang, E = SAngat kurang
+          let predikat = setPredikat(grade)
+
+          //set warna warni table menggunakan looping
+          let bgcolor = no % 2 ? "#dda15e" : "#bc6c25"
+
+          document.write(`<tr bgcolor="${bgcolor}">
+                <td>${no++}</td>
+                <td>${p.nama}</td>
+                <td>${p.nilai}</td>
+                <td>${ket}</td>
+                <td>${grade}</td>
+                <td>${predikat}</td>
+            </tr>`);
+        }
+      </script>
+    </tbody>
+  </table>
+</h3>
